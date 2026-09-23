@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Bugs | BugTrack{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h2 class="fw-bold mb-0">All Bugs</h2><a class="btn btn-primary" href="{% url 'bug_create' %}">+ Report Bug</a>
+</div>
+<form class="card card-body shadow-sm mb-3" method="get">
+  <div class="row g-2">
+    <div class="col-md-5"><input class="form-control" name="q" value="{{ q }}" placeholder="Search title or description"></div>
+    <div class="col-md-3"><select class="form-select" name="status"><option value="">All Status</option><option {% if selected_status == "Open" %}selected{% endif %}>Open</option><option {% if selected_status == "In Progress" %}selected{% endif %}>In Progress</option><option {% if selected_status == "Resolved" %}selected{% endif %}>Resolved</option></select></div>
+    <div class="col-md-3"><select class="form-select" name="priority"><option value="">All Priority</option><option {% if selected_priority == "Low" %}selected{% endif %}>Low</option><option {% if selected_priority == "Medium" %}selected{% endif %}>Medium</option><option {% if selected_priority == "High" %}selected{% endif %}>High</option><option {% if selected_priority == "Critical" %}selected{% endif %}>Critical</option></select></div>
+    <div class="col-md-1"><button class="btn btn-dark w-100">Go</button></div>
+  </div>
+</form>
+<div class="card shadow-sm"><div class="table-responsive"><table class="table table-hover mb-0 align-middle">
+<thead><tr><th>Title</th><th>Priority</th><th>Status</th><th>Assigned To</th><th>Actions</th></tr></thead>
+<tbody>
+{% for bug in bugs %}
+<tr>
+<td><a href="{% url 'bug_detail' bug.pk %}" class="fw-semibold">{{ bug.title }}</a><div class="small text-muted">{{ bug.created_at|date:"d M Y" }}</div></td>
+<td><span class="badge badge-{{ bug.priority|lower }}">{{ bug.priority }}</span></td>
+<td>{{ bug.status }}</td><td>{{ bug.assigned_to.username|default:"Not assigned" }}</td>
+<td><a class="btn btn-sm btn-outline-dark" href="{% url 'bug_detail' bug.pk %}">View</a></td>
+</tr>
+{% empty %}<tr><td colspan="5" class="text-center p-4 text-muted">No bugs found.</td></tr>{% endfor %}
+</tbody></table></div></div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | BugTrack{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div><h1 class="fw-bold">Bug Dashboard</h1><p class="text-muted mb-0">Simple overview of your software bugs.</p></div>
+  <a href="{% url 'bug_create' %}" class="btn btn-primary">+ Report Bug</a>
+</div>
+<div class="row g-3 mb-4">
+  <div class="col-md-3"><div class="stat-card"><div class="stat-number">{{ total }}</div><div>Total Bugs</div></div></div>
+  <div class="col-md-3"><div class="stat-card"><div class="stat-number text-danger">{{ open_count }}</div><div>Open</div></div></div>
+  <div class="col-md-3"><div class="stat-card"><div class="stat-number text-warning">{{ progress_count }}</div><div>In Progress</div></div></div>
+  <div class="col-md-3"><div class="stat-card"><div class="stat-number text-success">{{ resolved_count }}</div><div>Resolved</div></div></div>
+</div>
+<div class="card shadow-sm">
+  <div class="card-header bg-white fw-bold">Recent Bugs</div>
+  <div class="card-body p-0">
+    {% if recent_bugs %}
+    <div class="table-responsive"><table class="table mb-0 align-middle">
+      <thead><tr><th>Title</th><th>Priority</th><th>Status</th><th>Reported By</th></tr></thead>
+      <tbody>
+      {% for bug in recent_bugs %}
+      <tr><td><a href="{% url 'bug_detail' bug.pk %}">{{ bug.title }}</a></td><td><span class="badge badge-{{ bug.priority|lower }}">{{ bug.priority }}</span></td><td>{{ bug.status }}</td><td>{{ bug.reported_by.username }}</td></tr>
+      {% endfor %}
+      </tbody>
+    </table></div>
+    {% else %}
+      <div class="p-4 text-center text-muted">No bugs yet. Report your first bug.</div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

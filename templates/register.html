@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Register | BugTrack{% endblock %}
+{% block content %}
+<div class="auth-card card shadow-sm mx-auto">
+  <div class="card-body p-4">
+    <h2>Create account</h2>
+    <p class="text-muted">Register to report and track bugs.</p>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-dark w-100">Register</button>
+    </form>
+    <p class="text-center mt-3 mb-0">Already registered? <a href="{% url 'login' %}">Login</a></p>
+  </div>
+</div>
+{% endblock %}
