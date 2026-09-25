@@ -1,27 +1,201 @@
 {% extends "base.html" %}
+
 {% block title %}Bugs | BugTrack{% endblock %}
+
 {% block content %}
+
 <div class="d-flex justify-content-between align-items-center mb-3">
-  <h2 class="fw-bold mb-0">All Bugs</h2><a class="btn btn-primary" href="{% url 'bug_create' %}">+ Report Bug</a>
+    <h2 class="fw-bold mb-0">All Bugs</h2>
+    <a class="btn btn-primary" href="{% url 'bug_create' %}">+ Report Bug</a>
 </div>
+
 <form class="card card-body shadow-sm mb-3" method="get">
-  <div class="row g-2">
-    <div class="col-md-5"><input class="form-control" name="q" value="{{ q }}" placeholder="Search title or description"></div>
-    <div class="col-md-3"><select class="form-select" name="status"><option value="">All Status</option><option {% if selected_status == "Open" %}selected{% endif %}>Open</option><option {% if selected_status == "In Progress" %}selected{% endif %}>In Progress</option><option {% if selected_status == "Resolved" %}selected{% endif %}>Resolved</option></select></div>
-    <div class="col-md-3"><select class="form-select" name="priority"><option value="">All Priority</option><option {% if selected_priority == "Low" %}selected{% endif %}>Low</option><option {% if selected_priority == "Medium" %}selected{% endif %}>Medium</option><option {% if selected_priority == "High" %}selected{% endif %}>High</option><option {% if selected_priority == "Critical" %}selected{% endif %}>Critical</option></select></div>
-    <div class="col-md-1"><button class="btn btn-dark w-100">Go</button></div>
-  </div>
+    <div class="row g-2">
+
+        <!-- Search -->
+        <div class="col-md-4">
+            <input
+                class="form-control"
+                name="q"
+                value="{{ q }}"
+                placeholder="Search title or description"
+            >
+        </div>
+
+        <!-- Status Filter -->
+        <div class="col-md-2">
+            <select class="form-select" name="status">
+                <option value="">All Status</option>
+
+                <option value="Open"
+                    {% if selected_status == "Open" %}selected{% endif %}>
+                    Open
+                </option>
+
+                <option value="In Progress"
+                    {% if selected_status == "In Progress" %}selected{% endif %}>
+                    In Progress
+                </option>
+
+                <option value="Resolved"
+                    {% if selected_status == "Resolved" %}selected{% endif %}>
+                    Resolved
+                </option>
+            </select>
+        </div>
+
+        <!-- Priority Filter -->
+        <div class="col-md-2">
+            <select class="form-select" name="priority">
+                <option value="">All Priority</option>
+
+                <option value="Low"
+                    {% if selected_priority == "Low" %}selected{% endif %}>
+                    Low
+                </option>
+
+                <option value="Medium"
+                    {% if selected_priority == "Medium" %}selected{% endif %}>
+                    Medium
+                </option>
+
+                <option value="High"
+                    {% if selected_priority == "High" %}selected{% endif %}>
+                    High
+                </option>
+
+                <option value="Critical"
+                    {% if selected_priority == "Critical" %}selected{% endif %}>
+                    Critical
+                </option>
+            </select>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="col-md-2">
+            <select class="form-select" name="category">
+                <option value="">All Categories</option>
+
+                <option value="UI/UX"
+                    {% if selected_category == "UI/UX" %}selected{% endif %}>
+                    UI/UX
+                </option>
+
+                <option value="Functional"
+                    {% if selected_category == "Functional" %}selected{% endif %}>
+                    Functional
+                </option>
+
+                <option value="Database"
+                    {% if selected_category == "Database" %}selected{% endif %}>
+                    Database
+                </option>
+
+                <option value="Security"
+                    {% if selected_category == "Security" %}selected{% endif %}>
+                    Security
+                </option>
+
+                <option value="Performance"
+                    {% if selected_category == "Performance" %}selected{% endif %}>
+                    Performance
+                </option>
+            </select>
+        </div>
+
+        <!-- Filter Button -->
+        <div class="col-md-2">
+            <button class="btn btn-dark w-100">Go</button>
+        </div>
+
+    </div>
 </form>
-<div class="card shadow-sm"><div class="table-responsive"><table class="table table-hover mb-0 align-middle">
-<thead><tr><th>Title</th><th>Priority</th><th>Status</th><th>Assigned To</th><th>Actions</th></tr></thead>
-<tbody>
-{% for bug in bugs %}
-<tr>
-<td><a href="{% url 'bug_detail' bug.pk %}" class="fw-semibold">{{ bug.title }}</a><div class="small text-muted">{{ bug.created_at|date:"d M Y" }}</div></td>
-<td><span class="badge badge-{{ bug.priority|lower }}">{{ bug.priority }}</span></td>
-<td>{{ bug.status }}</td><td>{{ bug.assigned_to.username|default:"Not assigned" }}</td>
-<td><a class="btn btn-sm btn-outline-dark" href="{% url 'bug_detail' bug.pk %}">View</a></td>
-</tr>
-{% empty %}<tr><td colspan="5" class="text-center p-4 text-muted">No bugs found.</td></tr>{% endfor %}
-</tbody></table></div></div>
+
+<div class="card shadow-sm">
+    <div class="table-responsive">
+
+        <table class="table table-hover mb-0 align-middle">
+
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Assigned To</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for bug in bugs %}
+
+                <tr>
+
+                    <!-- Title -->
+                    <td>
+                        <a href="{% url 'bug_detail' bug.pk %}"
+                           class="fw-semibold">
+                            {{ bug.title }}
+                        </a>
+
+                        <div class="small text-muted">
+                            {{ bug.created_at|date:"d M Y" }}
+                        </div>
+                    </td>
+
+                    <!-- Category -->
+                    <td>
+                        <span class="badge bg-secondary">
+                            {{ bug.category }}
+                        </span>
+                    </td>
+
+                    <!-- Priority -->
+                    <td>
+                        <span class="badge badge-{{ bug.priority|lower }}">
+                            {{ bug.priority }}
+                        </span>
+                    </td>
+
+                    <!-- Status -->
+                    <td>
+                        {{ bug.status }}
+                    </td>
+
+                    <!-- Assigned Developer -->
+                    <td>
+                        {{ bug.assigned_to.username|default:"Not assigned" }}
+                    </td>
+
+                    <!-- Actions -->
+                    <td>
+                        <a
+                            class="btn btn-sm btn-outline-dark"
+                            href="{% url 'bug_detail' bug.pk %}">
+                            View
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="6"
+                        class="text-center p-4 text-muted">
+                        No bugs found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
 {% endblock %}

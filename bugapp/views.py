@@ -40,15 +40,30 @@ def bug_list(request):
     q = request.GET.get("q", "").strip()
     status = request.GET.get("status", "")
     priority = request.GET.get("priority", "")
+    category = request.GET.get("category", "")
+
     bugs = Bug.objects.select_related("reported_by", "assigned_to")
+
     if q:
-        bugs = bugs.filter(Q(title__icontains=q) | Q(description__icontains=q))
+        bugs = bugs.filter(
+            Q(title__icontains=q) | Q(description__icontains=q)
+        )
+
     if status:
         bugs = bugs.filter(status=status)
+
     if priority:
         bugs = bugs.filter(priority=priority)
+
+    if category:
+        bugs = bugs.filter(category=category)
+
     return render(request, "bug_list.html", {
-        "bugs": bugs, "q": q, "selected_status": status, "selected_priority": priority
+        "bugs": bugs,
+        "q": q,
+        "selected_status": status,
+        "selected_priority": priority,
+        "selected_category": category,
     })
 
 @login_required
