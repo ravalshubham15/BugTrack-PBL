@@ -1,227 +1,210 @@
-# 🐞 BugTrack – Software Bug Reporting & Tracking System
+# 🐞 BugTrack — Software Bug Reporting & Tracking System
 
-A simple web-based Software Bug Reporting and Tracking System developed as a Project Based Learning (PBL) project.
+<p align="center">
+
+  <img src="https://img.shields.io/badge/Python-3.12+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Django-5.2+-092E20?style=for-the-badge&logo=django&logoColor=white">
+  <img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white">
+  <img src="https://img.shields.io/badge/Bootstrap-5-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white">
+  <img src="https://img.shields.io/badge/Git-GitHub-F05032?style=for-the-badge&logo=git&logoColor=white">
+
+</p>
+
+<p align="center">
+<strong>🚀 Report • Track • Manage • Resolve</strong>
+</p>
+
+---
 
 ## 📌 About The Project
 
-BugTrack is a web-based Software Bug Reporting and Tracking System developed using Python and Django.
+**BugTrack** is a modern, simple and user-friendly web-based **Software Bug Reporting & Tracking System** developed using **Python and Django**.
 
-It helps users report, manage, assign, and track software bugs from a centralized platform.
+The purpose of this project is to provide a centralized platform where users can report software bugs and developers can manage, assign, track and resolve those bugs efficiently.
 
-The system allows users to:
+### 🔄 Bug Lifecycle
 
-- Register and Login
-- Report new bugs
-- View bug details
-- Edit bugs
-- Delete bugs
-- Set bug priority
-- Assign bugs to developers
-- Track bug status
-- Search bugs
-- Filter bugs
-- View bug statistics on the dashboard
+**🐞 Report → 🏷️ Categorize → 🚨 Prioritize → 👨‍💻 Assign → 🛠️ Work → ✅ Resolve**
 
-## 🎯 Objectives
+---
 
-- Provide a simple platform for reporting software bugs.
-- Maintain all bug information in one place.
-- Make bug management easier for developers.
-- Assign bugs to responsible developers.
-- Track the progress of reported bugs.
-- Provide search and filtering functionality.
-- Display bug statistics through a dashboard.
-- Reduce manual bug tracking work.
+## 🎯 Project Objectives
 
-## ✨ Features
+- 🐞 Provide an organized platform for reporting software bugs
+- 📋 Maintain bug records in a centralized database
+- 👨‍💻 Assign bugs to developers
+- 🚦 Track bug status throughout development
+- 🚨 Manage bug priority
+- 🏷️ Categorize bugs
+- 🔎 Search and filter bug records
+- 📊 Display useful bug statistics
+- 🔐 Provide secure user authentication
+- 🛠️ Provide administrative management through Django Admin
 
-### 👤 User Authentication
+---
 
-- User Registration
-- User Login
-- User Logout
-- Django-based authentication
+## ✨ Key Features
 
-### 🐞 Bug Management
+### 🔐 User Authentication
 
-- Report a new bug
-- View all bugs
-- View complete bug details
-- Edit existing bugs
-- Delete bugs
-
-### 🎯 Priority Management
-
-Each bug can have one of the following priorities:
-
-- Low
-- Medium
-- High
-- Critical
-
-### 🔄 Status Tracking
-
-Each bug can have one of the following statuses:
-
-- Open
-- In Progress
-- Resolved
-
-Bug workflow:
-
-Open → In Progress → Resolved
-
-### 👨‍💻 Developer Assignment
-
-Bugs can be assigned to developers for further work and tracking.
-
-### 🔎 Search & Filter
-
-Users can:
-
-- Search bugs
-- Filter bugs by status
-- Filter bugs by priority
+- 📝 User Registration
+- 🔑 User Login
+- 🚪 User Logout
+- 🔒 Authentication-protected pages
 
 ### 📊 Dashboard
 
-The dashboard displays:
+- 📌 Total Bugs
+- 🟢 Open Bugs
+- 🟡 In Progress Bugs
+- 🔵 Resolved Bugs
 
-- Total Bugs
-- Open Bugs
-- In Progress Bugs
-- Resolved Bugs
+### 🐞 Bug Management
 
-## 🛠️ Technologies Used
+- ➕ Report a new bug
+- 👁️ View bug details
+- ✏️ Edit bug information
+- 🗑️ Delete bugs
+- 👨‍💻 Assign bugs to developers
+- 🔄 Change bug status
 
-| Technology | Purpose |
-|------------|---------|
-| Python | Programming Language |
-| Django | Backend Web Framework |
-| SQLite | Database |
-| HTML5 | Web Page Structure |
-| CSS3 | Styling |
-| Bootstrap | User Interface |
-| JavaScript | Client-side Functionality |
-| VS Code | Development Environment |
-| Git | Version Control |
-| GitHub | Source Code Management |
+### 🏷️ Bug Categories
 
-## 🏗️ System Architecture
+- 🎨 UI/UX
+- ⚙️ Functional
+- 🗄️ Database
+- 🔐 Security
+- ⚡ Performance
 
-```text
-User
-  ↓
-Web Interface
-  ↓
-Django Application
-  ↓
-Views / Forms
-  ↓
-Models
-  ↓
-SQLite Database
+### 🚨 Bug Priority
+
+- 🟢 Low
+- 🟡 Medium
+- 🟠 High
+- 🔴 Critical
+
+### 🚦 Bug Status
+
+- 🟢 Open
+- 🟡 In Progress
+- 🔵 Resolved
+
+### 🔎 Search & Filtering
+
+Users can search bugs by title or description and filter them by:
+
+- 🚦 Status
+- 🚨 Priority
+- 🏷️ Category
+
+### 👨‍💻 Developer Assignment
+
+A reported bug can be assigned to a registered developer/user for development and resolution.
+
+### 🛠️ Admin Panel
+
+Django's built-in Admin Panel allows authorized administrators to manage users and bug records.
+
+---
+
+## 🏗️ Project Architecture
+
+                         👤 User
+                           │
+                           ▼
+                    🌐 Web Interface
+                           │
+                           ▼
+                    🐍 Django Backend
+                           │
+              ┌────────────┼────────────┐
+              ▼            ▼            ▼
+           Views.py     Forms.py     URLs.py
+              │
+              ▼
+           🗄️ Models
+              │
+              ▼
+          💾 SQLite DB
+
+---
 
 ## 🔄 System Workflow
 
-The working process of BugTrack is as follows:
-
-1. User opens the BugTrack website.
-2. User registers a new account or logs in.
-3. After login, the user is redirected to the dashboard.
-4. User reports a new bug by entering:
-   - Bug title
-   - Bug description
-   - Priority
-   - Assigned developer
-5. The bug is saved in the SQLite database.
-6. The reported bug appears in the All Bugs page.
-7. Users can search and filter bugs based on:
-   - Bug title
-   - Status
-   - Priority
-8. The developer updates the bug status:
-   - Open
-   - In Progress
-   - Resolved
-9. Users can view, edit, or delete bug details.
-10. The dashboard displays the total number of bugs according to their status.
-
-### Bug Status Flow
-
-Open → In Progress → Resolved
+👤 User Registration
+        │
+        ▼
+🔑 Login
+        │
+        ▼
+📊 Dashboard
+        │
+        ▼
+🐞 Report Bug
+        │
+        ▼
+🏷️ Select Category
+        │
+        ▼
+🚨 Set Priority
+        │
+        ▼
+👨‍💻 Assign Developer
+        │
+        ▼
+🟢 Open
+        │
+        ▼
+🟡 In Progress
+        │
+        ▼
+🔵 Resolved
 
 ---
 
-## 🗄️ Database
+## 🧰 Technology Stack
 
-BugTrack uses **SQLite** as its database.
-
-The main database table is:
-
-### Bug Table
-
-| Field Name | Description |
+| Technology | Purpose |
 |---|---|
-| id | Unique ID of the bug |
-| title | Title of the bug |
-| description | Detailed explanation of the bug |
-| priority | Bug priority such as Low, Medium, High, or Critical |
-| status | Current status of the bug |
-| reported_by | User who reported the bug |
-| assigned_to | Developer assigned to fix the bug |
-| created_at | Date and time when the bug was created |
-| updated_at | Date and time when the bug was last updated |
-
-### Priority Types
-
-- Low
-- Medium
-- High
-- Critical
-
-### Status Types
-
-- Open
-- In Progress
-- Resolved
-
-The database stores all bug information and helps the application manage bug records efficiently.
+| 🐍 Python | Programming Language |
+| 🌐 Django | Backend Web Framework |
+| 🧱 HTML5 | Web Structure |
+| 🎨 CSS3 | Styling |
+| 🅱️ Bootstrap | Responsive User Interface |
+| ⚡ JavaScript | Client-side Functionality |
+| 🗄️ SQLite | Database |
+| 🔧 Git | Version Control |
+| 🐙 GitHub | Code Hosting |
+| 💻 VS Code | Development Environment |
 
 ---
 
-## 📁 Project Structure
+## 📂 Project Structure
 
-```text
 BugTrack_PBL/
 │
-├── manage.py
-├── requirements.txt
-├── README.md
-├── db.sqlite3
-│
-├── BugTrack/
+├── 📁 BugTrack/
 │   ├── __init__.py
 │   ├── settings.py
 │   ├── urls.py
 │   ├── asgi.py
 │   └── wsgi.py
 │
-├── bugapp/
-│   ├── migrations/
+├── 📁 bugapp/
+│   ├── 📁 migrations/
 │   │   ├── __init__.py
-│   │   └── 0001_initial.py
-│   │
+│   │   ├── 0001_initial.py
+│   │   └── 0002_bug_category.py
 │   ├── __init__.py
+│   ├── models.py
+│   ├── views.py
+│   ├── urls.py
+│   ├── forms.py
 │   ├── admin.py
 │   ├── apps.py
-│   ├── forms.py
-│   ├── models.py
-│   ├── urls.py
-│   ├── views.py
 │   └── tests.py
 │
-├── templates/
+├── 📁 templates/
 │   ├── base.html
 │   ├── login.html
 │   ├── register.html
@@ -231,6 +214,330 @@ BugTrack_PBL/
 │   ├── bug_detail.html
 │   └── bug_confirm_delete.html
 │
-└── static/
-    └── css/
-        └── style.css
+├── 📁 static/
+│   └── 📁 css/
+│       └── style.css
+│
+├── 📄 manage.py
+├── 📄 requirements.txt
+├── 📄 .gitignore
+└── 📄 README.md
+
+---
+
+## 🗄️ Database Design
+
+BugTrack uses **SQLite** as its database.
+
+### 🐞 Bug Model
+
+| Field | Description |
+|---|---|
+| 🆔 `id` | Unique Bug ID |
+| 📝 `title` | Bug title |
+| 📄 `description` | Detailed bug description |
+| 🏷️ `category` | Bug category |
+| 🚨 `priority` | Bug priority |
+| 🚦 `status` | Current bug status |
+| 👤 `reported_by` | User who reported the bug |
+| 👨‍💻 `assigned_to` | Developer assigned to the bug |
+| 📅 `created_at` | Bug creation date and time |
+| 🔄 `updated_at` | Last updated date and time |
+
+The project also uses Django's built-in **User model** for authentication.
+
+### 🏷️ Bug Categories
+
+- UI/UX
+- Functional
+- Database
+- Security
+- Performance
+
+### 🚨 Priority Types
+
+- Low
+- Medium
+- High
+- Critical
+
+### 🚦 Status Types
+
+- Open
+- In Progress
+- Resolved
+
+---
+
+## 🖥️ Application Pages
+
+### 🔐 Authentication
+
+- 📝 Register
+- 🔑 Login
+- 🚪 Logout
+
+### 📊 Main Application
+
+- 🏠 Dashboard
+- ➕ Report Bug
+- 📋 All Bugs
+- 👁️ Bug Details
+- ✏️ Edit Bug
+- 🗑️ Delete Bug
+
+### ⚙️ Administration
+
+- 🛠️ Django Admin Panel
+
+---
+
+## 🔍 Search & Filtering
+
+### 🔎 Search
+
+- 🐞 Bug Title
+- 📄 Bug Description
+
+### 🎯 Filters
+
+- 🚦 Status
+- 🚨 Priority
+- 🏷️ Category
+
+### Example
+
+Search   : Login button
+Status   : Open
+Priority : High
+Category : Functional
+
+---
+
+## 🔐 Security
+
+- 🔒 Django Authentication
+- 🔐 Secure Password Handling
+- 🛡️ CSRF Protection
+- 🔑 Admin Authentication
+- 🚫 Database exclusion from Git
+- 🚫 Environment file exclusion from Git
+- 👤 Login-protected application pages
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the Repository
+
+git clone https://github.com/ravalshubham15/BugTrack-PBL.git
+
+### 2️⃣ Open the Project Folder
+
+cd BugTrack-PBL
+
+### 3️⃣ Install Dependencies
+
+py -m pip install -r requirements.txt
+
+### 4️⃣ Create Migrations
+
+py manage.py makemigrations
+
+### 5️⃣ Apply Migrations
+
+py manage.py migrate
+
+### 6️⃣ Create Superuser
+
+py manage.py createsuperuser
+
+### 7️⃣ Start the Development Server
+
+py manage.py runserver
+
+### 8️⃣ Open the Application
+
+http://127.0.0.1:8000/
+
+### 🛠️ Admin Panel
+
+http://127.0.0.1:8000/admin/
+
+---
+
+## 🧪 Example Bug Workflow
+
+### 1️⃣ Report Bug
+
+Title       : Login button not working
+
+Description : Login button does not respond after entering valid credentials.
+
+Category    : Functional
+
+Priority    : High
+
+Status      : Open
+
+### 2️⃣ Assign Developer
+
+The reported bug is assigned to a developer.
+
+### 3️⃣ Development
+
+🟢 Open
+   ↓
+🟡 In Progress
+
+### 4️⃣ Resolution
+
+🔵 Resolved
+
+---
+
+## 🎓 Project Based Learning
+
+This project was developed as a **Project Based Learning (PBL)** web application.
+
+The project demonstrates practical implementation of:
+
+- 🐍 Python Programming
+- 🌐 Django Web Development
+- 🗄️ Database Management
+- 🔐 Authentication
+- 📝 Django Forms
+- 🔄 CRUD Operations
+- 🔎 Search & Filtering
+- 👨‍💻 Developer Assignment
+- 📊 Dashboard Development
+- 🛠️ Django Admin
+- 🔧 Git & GitHub
+
+---
+
+## 🎯 Learning Outcomes
+
+Through this project, we learned:
+
+- 🐍 Python programming
+- 🌐 Django web development
+- 🧩 Django MVT architecture
+- 🗄️ Database design
+- 🔐 Authentication implementation
+- 📝 Django forms
+- 🔄 CRUD operations
+- 🔎 Search and filtering
+- 📊 Dashboard development
+- 🛠️ Django Admin
+- 🔧 Git version control
+- 🐙 GitHub repository management
+- 🤝 Team-based project development
+
+---
+
+## 🚀 Future Improvements
+
+Possible future enhancements include:
+
+- 📎 Bug screenshot/file attachments
+- 💬 Bug comments
+- 🔔 Email notifications
+- 🔔 In-app notifications
+- 📅 Bug due dates
+- 📈 Advanced analytics
+- 🌙 Dark mode
+- ☁️ Cloud deployment
+- 🐘 PostgreSQL database
+- 📱 Improved mobile interface
+
+---
+
+## 📸 Screenshots
+
+Recommended screenshots:
+
+1. 🔐 Login Page
+2. 📝 Registration Page
+3. 📊 Dashboard
+4. ➕ Report Bug Page
+5. 📋 All Bugs Page
+6. 👁️ Bug Details Page
+7. ✏️ Edit Bug Page
+8. 🛠️ Django Admin Panel
+
+---
+
+## 📋 Project Information
+
+| Information | Details |
+|---|---|
+| 🐞 Project Name | BugTrack |
+| 📚 Project Type | Project Based Learning |
+| 🌐 Application Type | Web Application |
+| 🐍 Backend | Python + Django |
+| 🎨 Frontend | HTML + CSS + Bootstrap |
+| 🗄️ Database | SQLite |
+| 🔧 Version Control | Git |
+| 🐙 Repository | GitHub |
+| 💻 IDE | Visual Studio Code |
+
+### 🔗 GitHub Repository
+
+https://github.com/ravalshubham15/BugTrack-PBL
+
+---
+
+## 📜 License
+
+This project was developed for **educational and academic purposes** as part of a Project Based Learning (PBL) activity.
+
+---
+
+## 🙏 Acknowledgement
+
+We would like to sincerely thank our faculty members and institute for providing us with the opportunity to develop this project as part of our **Project Based Learning** activity.
+
+This project helped us gain practical experience in web development, database management, authentication, version control and team collaboration.
+
+---
+
+## 💡 Conclusion
+
+**BugTrack** provides a simple and organized platform for reporting, managing, assigning and tracking software bugs.
+
+The project demonstrates how **Python, Django, HTML, CSS, Bootstrap and SQLite** can be combined to develop a practical software bug management system.
+
+Through this project, we gained valuable practical knowledge of **web application development, database management, authentication, CRUD operations, Git/GitHub and teamwork**.
+
+---
+
+## 👨‍💻 Developer
+
+### **Raval Shubham**
+
+💻 Computer Engineering Student
+
+🌐 GitHub: [@ravalshubham15](https://github.com/ravalshubham15)
+
+---
+
+<p align="center">
+
+<strong>🐞 BUGTRACK</strong>
+
+<br>
+
+<strong>🚀 Report • Track • Manage • Resolve</strong>
+
+<br><br>
+
+<strong>Built with ❤️ using Python & Django</strong>
+
+</p>
+
+<p align="center">
+
+⭐ <strong>If you find this project useful, consider giving it a star!</strong> ⭐
+
+</p>
